@@ -19,6 +19,9 @@ static partial class Program
             {
                 case EtatJeu.Attente:
                     MettreAJourAttente(dt);
+                    DeplacerRaquette(dt);
+                    CollerBalleARaquette();
+                    LancerBalle();
                     break;
                 case EtatJeu.Jeu:
                     MettreAJourJeu(dt);
@@ -45,6 +48,7 @@ static partial class Program
     /// <summary>Remet le jeu dans son état de départ.</summary>
     static void Reinitialiser()
     {
+        positionRaquette = new Vector2((LARGEUR - LARGEUR_RAQUETTE) / 2, HAUTEUR - MARGE_BAS_RAQUETTE);
     }
 
     /// <summary>Une image de jeu dans l'état Attente.</summary>

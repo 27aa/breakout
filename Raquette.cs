@@ -14,6 +14,16 @@ static partial class Program
     /// <summary>Déplace la raquette avec les flèches, sans sortir de la fenêtre.</summary>
     static void DeplacerRaquette(float dt)
     {
+        if (Raylib.IsKeyDown(KeyboardKey.Left) && positionRaquette.X > 0)
+        {
+            positionRaquette.X -=  VITESSE_RAQUETTE / 60;
+        }
+
+        if (Raylib.IsKeyDown(KeyboardKey.Right) && (positionRaquette.X + LARGEUR_RAQUETTE) < LARGEUR)
+        {
+            positionRaquette.X += VITESSE_RAQUETTE / 60;
+        }
+
     }
 
     /// <summary>Fait rebondir la balle si elle touche la raquette.</summary>
