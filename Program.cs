@@ -19,15 +19,9 @@ static partial class Program
             {
                 case EtatJeu.Attente:
                     MettreAJourAttente(dt);
-                    DeplacerRaquette(dt);
-                    CollerBalleARaquette();
-                    LancerBalle();
                     break;
                 case EtatJeu.Jeu:
                     MettreAJourJeu(dt);
-                    DeplacerBalle(dt);
-                    RebondirSurMurs();
-                    RebondirSurRaquette();
                     break;
                 case EtatJeu.Perdu:
                 case EtatJeu.Gagne:
@@ -52,16 +46,29 @@ static partial class Program
     static void Reinitialiser()
     {
         positionRaquette = new Vector2((LARGEUR - LARGEUR_RAQUETTE) / 2, HAUTEUR - MARGE_BAS_RAQUETTE);
+        for (int i = 0; i < LIGNES_BRIQUES ; i++)
+        {
+            for (int j = 0; j < COLONNES_BRIQUES; j++)
+            {
+                briques[i, j] = true;
+            }
+        }
     }
 
     /// <summary>Une image de jeu dans l'état Attente.</summary>
     static void MettreAJourAttente(float dt)
     {
+        DeplacerRaquette(dt);
+        CollerBalleARaquette();
+        LancerBalle();
     }
 
     /// <summary>Une image de jeu dans l'état Jeu.</summary>
     static void MettreAJourJeu(float dt)
     {
+        DeplacerBalle(dt);
+        RebondirSurMurs();
+        RebondirSurRaquette();
     }
 
     /// <summary>Une image de jeu dans les états Perdu et Gagne.</summary>
