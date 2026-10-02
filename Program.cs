@@ -25,6 +25,9 @@ static partial class Program
                     break;
                 case EtatJeu.Jeu:
                     MettreAJourJeu(dt);
+                    DeplacerBalle(dt);
+                    RebondirSurMurs();
+                    RebondirSurRaquette();
                     break;
                 case EtatJeu.Perdu:
                 case EtatJeu.Gagne:
